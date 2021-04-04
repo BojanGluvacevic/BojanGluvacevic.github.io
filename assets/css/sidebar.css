@@ -1,7 +1,8 @@
-.nav-logo {
+.sidebar__nav__logo {
 	transform: translateX(-50%);
 	left: 50%;
 	position: absolute;
+	width: 8em;
 }
 
 .sidebar {

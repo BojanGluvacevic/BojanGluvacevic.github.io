@@ -55,7 +55,7 @@
 	.sidebar__nav__logo {
 		display: none;
 	}
-	
+
 	.sidebar {
 		bottom: 0;
 		width: 100%;
@@ -68,7 +68,7 @@
 
 	.sidebar .sidebar__nav .sidebar__nav__link {
 		height: 100%;
-		padding: 0.15em;
+		padding: 0.8em;
 	}
 
 	.sidebar .sidebar__nav .sidebar__nav__text {
@@ -76,7 +76,7 @@
 	}
 
 	.sidebar .sidebar__nav i {
-		font-size: 0.5rem;
+		font-size: 1.5em;
 	}
 }
 

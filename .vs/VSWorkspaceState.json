@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\assets",
+    "\\assets\\css",
+    "\\assets\\js",
+    "\\bckp"
   ],
+  "SelectedNode": "\\assets\\css\\core.css",
   "PreviewInSolutionExplorer": false
 }

@@ -2,7 +2,6 @@
 	background-color: #333;
 	position: fixed;
 	transition: width 0.2s ease;
-	width: 14rem;
 }
 
 .sidebar nav {

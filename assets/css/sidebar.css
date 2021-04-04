@@ -57,7 +57,7 @@
 		padding: 0.15em;
 	}
 
-	.sidebar:hover .sidebar__nav .sidebar__nav__text {
+	.sidebar .sidebar__nav .sidebar__nav__text {
 		display: none;
 	}
 
@@ -87,6 +87,8 @@
 
 	.sidebar .sidebar__nav .sidebar__nav__link {
 		padding: 0.4em;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 
 	.sidebar:hover .sidebar__nav .sidebar__nav__text {

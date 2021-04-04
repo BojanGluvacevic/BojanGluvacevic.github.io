@@ -59,7 +59,7 @@
 	}
 
 	.sidebar .sidebar__nav i {
-		font-size: 2rem;
+		font-size: 1em;
 	}
 }
 
@@ -100,5 +100,6 @@
 		overflow-y: scroll;
 	}
 }
+
 
 

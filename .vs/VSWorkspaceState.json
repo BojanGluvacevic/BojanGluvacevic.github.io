@@ -3,9 +3,10 @@
     "",
     "\\assets",
     "\\assets\\css",
+    "\\assets\\img",
     "\\assets\\js",
     "\\bckp"
   ],
-  "SelectedNode": "\\assets\\css\\core.css",
+  "SelectedNode": "\\assets\\img\\logo.png",
   "PreviewInSolutionExplorer": false
 }

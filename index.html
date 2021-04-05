@@ -124,21 +124,34 @@
             </p>
         </section>
         <section>
-            <h2>Mail link generator</h2>
+            <h2>MLG - Mail Link Generator</h2>
             <form>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__des__to" style="width:105px;">Recipient(s)</span>
+                    <span class="input-group-text" id="mlg__des__to" style="width:105px; text-align:center;">Recipient(s)</span>
                     <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to">
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__des__subject" style="width:105px;">Subject</span>
+                    <span class="input-group-text" id="mlg__des__subject" style="width:105px; text-align:center;">Subject</span>
                     <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject">
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" style="width:105px;">Message</span>
+                    <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
                     <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8"></textarea>
                 </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Create Template</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split show" data-bs-toggle="dropdown" aria-expanded="true">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu show" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(79px, 40px);" data-popper-placement="bottom-start">
+                        <li><a class="dropdown-item" href="#">Create Template</a></li>
+                        <li><a class="dropdown-item" href="#">Copy URL</a></li>
+                        <li><a class="dropdown-item" href="#">Open</a></li>
+                    </ul>
+                </div>
             </form>
+
+
         </section>
     </main>
 

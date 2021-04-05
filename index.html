@@ -125,34 +125,36 @@
                 molestiae vel perspiciatis animi?
             </p>
         </section>
-        <section id="MLG" class="my-3">
-            <h2>MLG - Mail Link Generator</h2>
-            <form>
-                <div class="input-group mb-3 bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-                    <span class="input-group-text" id="mlg__des__to" style="width:105px; text-align:center;">Recipient(s)</span>
-                    <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__des__subject" style="width:105px; text-align:center;">Subject</span>
-                    <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
-                    <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');"></textarea>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary" onclick="">Add Template</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(79px, 40px);" data-popper-placement="bottom-start">
-                        <li><a class="dropdown-item" href="javascript:MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">Create Template</a></li>
-                        <li><a class="dropdown-item" id="mlg__URLCopy" href="javascript:copyToClipboard('mlg__temp__value');">Copy URL</a></li>
-                        <li><a class="dropdown-item" id="mlg__URLOpen" href="#" target="_blank">Open</a></li>
-                    </ul>
-                    <input id="mlg__temp__value" hidden="hidden" value="" >
-                </div>
-            </form>
+        <section class="my-3">
+            <article id="MLG">
+                <h2>MLG - Mail Link Generator</h2>
+                <form>
+                    <div class="input-group mb-3 bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+                        <span class="input-group-text" id="mlg__des__to" style="width:105px; text-align:center;">Recipient(s)</span>
+                        <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="mlg__des__subject" style="width:105px; text-align:center;">Subject</span>
+                        <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
+                        <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');"></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary" onclick="">Add Template</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(79px, 40px);" data-popper-placement="bottom-start">
+                            <li><a class="dropdown-item" href="javascript:MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">Create Template</a></li>
+                            <li><a class="dropdown-item" id="mlg__URLCopy" href="javascript:copyToClipboard('mlg__temp__value');">Copy URL</a></li>
+                            <li><a class="dropdown-item" id="mlg__URLOpen" href="#" target="_blank">Open</a></li>
+                        </ul>
+                        <input id="mlg__temp__value" hidden="hidden" value="">
+                    </div>
+                </form>
+            </article>
         </section>
     </main>
 

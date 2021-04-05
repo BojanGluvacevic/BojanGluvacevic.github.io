@@ -33,6 +33,7 @@
       })
     })
 
+    
   function setActiveItem() {
     var hash = window.location.hash
 
@@ -62,9 +63,10 @@
       expanded.click()
     }
   }
-
+/*
   setActiveItem()
-  window.addEventListener('hashchange', setActiveItem)
+    window.addEventListener('hashchange', setActiveItem)
+*/
 })()
 
 function MLG__Prepare(to, subject, body, outputControl) {

@@ -89,5 +89,5 @@ function copyToClipboard(input) {
 }
 
 function MLG__Prepare__URL() {
-    document.getElementById('mlg__URLOpen').href = document.getElementById('mlg__temp__value').value;
+    $("a#mlg__URLOpen").href = document.getElementById('mlg__temp__value').value;
 }

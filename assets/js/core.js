@@ -66,3 +66,30 @@
   setActiveItem()
   window.addEventListener('hashchange', setActiveItem)
 })()
+
+function MLG__Prepare(to, subject, body, outputControl) {
+    var mailTo = document.getElementById(to).value;
+    var mailSubject = document.getElementById(subject).value;
+    var mailBody = document.getElementById(body).value;
+
+    //encode values
+    mailTo = "&to=" + encodeURIComponent(mailTo);
+    mailSubject = "&subject=" + encodeURIComponent(mailSubject);
+    mailBody = "&body=" + encodeURIComponent(mailBody);
+
+    var mailBaseURL = "https://outlook.office.com/?path=/mail/action/compose";
+    var mailNewLink = mailBaseURL + mailTo + mailSubject + mailBody;
+
+    document.getElementById(outputControl).value = mailNewLink;
+}
+
+function copyToClipboard(input) {
+    var copyText = document.getElementById(input);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+}
+
+function MLG__Prepare__URL() {
+    document.getElementById('mlg__URLOpen').href = document.getElementById('mlg__temp__value').value;
+}

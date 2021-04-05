@@ -81,7 +81,7 @@ function MLG__Prepare(to, subject, body, outputControl) {
     var mailNewLink = mailBaseURL + mailTo + mailSubject + mailBody;
 
     document.getElementById(outputControl).value = mailNewLink;
-    $("a#mlg__URLOpen").href = mailNewLink;
+    $("#mlg__URLOpen").attr("href", mailNewLink);
 }
 
 function copyToClipboard(input) {

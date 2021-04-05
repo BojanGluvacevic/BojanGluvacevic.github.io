@@ -45,3 +45,8 @@ body {
         padding: 2.5em;
     }
 }
+
+/* Size of Textarea */
+.txt-3 {
+    min-height: 200px;
+}

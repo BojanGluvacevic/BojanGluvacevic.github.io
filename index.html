@@ -127,8 +127,16 @@
             <h2>Mail link generator</h2>
             <form>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__des__to">Recipients</span>
+                    <span class="input-group-text" id="mlg__des__to">Recipient(s)</span>
                     <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="To" aria-describedby="mlg__des__to" id="mlg__to">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="mlg__des__subject">Subject</span>
+                    <input type="text" class="form-control" placeholder="Email subject" aria-label="To" aria-describedby="mlg__des__subject" id="mlg__subject">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Message</span>
+                    <textarea class="form-control" aria-label="Message" id="mlg__message"></textarea>
                 </div>
             </form>
         </section>

@@ -46,6 +46,6 @@ body {
     }
 }
 
-.label-width {
+.input-group-text .mlg-label-width {
     width: 105px;
 }

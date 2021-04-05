@@ -46,7 +46,6 @@ body {
     }
 }
 
-/* Size of Textarea */
-.txt-3 {
-    min-height: 200px;
+.label-width {
+    width: 105px;
 }

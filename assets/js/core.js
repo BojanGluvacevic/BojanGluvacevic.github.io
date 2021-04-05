@@ -85,9 +85,7 @@ function MLG__Prepare(to, subject, body, outputControl) {
 
 function copyToClipboard(input) {
     var copyText = document.getElementById(input).value;
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
+    navigator.clipboard.writeText(copyText);
 }
 
 function MLG__Prepare__URL() {

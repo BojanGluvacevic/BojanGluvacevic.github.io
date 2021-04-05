@@ -81,13 +81,10 @@ function MLG__Prepare(to, subject, body, outputControl) {
     var mailNewLink = mailBaseURL + mailTo + mailSubject + mailBody;
 
     document.getElementById(outputControl).value = mailNewLink;
+    $("a#mlg__URLOpen").href = mailNewLink;
 }
 
 function copyToClipboard(input) {
     var copyText = document.getElementById(input).value;
     navigator.clipboard.writeText(copyText);
-}
-
-function MLG__Prepare__URL() {
-    $("a#mlg__URLOpen").href = document.getElementById('mlg__temp__value').value;
 }

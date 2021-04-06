@@ -10,6 +10,7 @@
 	background-color: #2E3138;
 	position: fixed;
 	transition: width 0.2s ease;
+	z-index: 9999;
 }
 
 .sidebar nav {

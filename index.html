@@ -130,67 +130,51 @@
             <h2>MLG - Mail Link Generator</h2>
             <form>
                 <div class="input-group mb-3">
+                    <span class="input-group-text" id="mlg__des__name" style="width:105px; text-align:center;">Name</span>
+                    <input type="text" class="form-control" placeholder="Template name" aria-label="Name" aria-describedby="mlg__des__name" id="mlg__name" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                </div>
+                <div class="input-group mb-3">
                     <span class="input-group-text" id="mlg__des__to" style="width:105px; text-align:center;">Recipient(s)</span>
-                    <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="mlg__des__subject" style="width:105px; text-align:center;">Subject</span>
-                    <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
-                    <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');"></textarea>
+                    <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');"></textarea>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary" onclick="">Add Template</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onkeyup="MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    <button type="button" class="btn btn-primary" onclick="MLG_Table_Add('mlg__name','mlg__to','mlg__subject','mlg__message');">Add Template</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(79px, 40px);" data-popper-placement="bottom-start">
-                        <li><a class="dropdown-item" href="javascript:MLG__Prepare('mlg__to','mlg__subject','mlg__message','mlg__temp__value');">Create Template</a></li>
                         <li><a class="dropdown-item" id="mlg__URLCopy" href="javascript:copyToClipboard('mlg__temp__value');">Copy URL</a></li>
                         <li><a class="dropdown-item" id="mlg__URLOpen" href="#" target="_blank">Open</a></li>
                     </ul>
                     <input id="mlg__temp__value" hidden="hidden" value="">
                 </div>
             </form>
-        </section>
-        <br />
-        <br />
-        <br />
-        <section>
-            <h2>Title 3</h2>
-            <table class="table table-striped">
+
+            <table id="mlg-table" class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Recipient(s)</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Message</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
                 </tbody>
             </table>
-
         </section>
+        <br />
+        <br />
+        <br />
     </main>
 
     <!-- JavaScript Files -->

@@ -103,10 +103,8 @@ function MLG_Table_Add(name, to, subject, body) {
             "<td>" + document.getElementById(name).value + "</td>" +
             "<td>" + document.getElementById(to).value + "</td>" +
             "<td>" + document.getElementById(subject).value + "</td>" +
-            "<td>" + document.getElementById(body).value.replace(/ /g, '<sp>').replace(/(?:\r|\n|\r\n)/g, '<br>') + "</td>" +
+            "<td>" + document.getElementById(body).value.replace(/(?:\r|\n|\r\n)/g, '<br>') + "</td>" +
             "<td>" + "<button type='button' onclick=\"$(this).closest('tr').remove()\" class='btn btn-default'>" + "<i class='mdi mdi-delete'>" + "</button>" + "</td>" +
             "</tr>");
-
-        
     }
 }

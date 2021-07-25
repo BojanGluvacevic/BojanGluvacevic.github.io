@@ -58,11 +58,17 @@
                     </a>
                 </li>
                 <li>
-                    <label class="sidebar__nav__link" for="file_input_id">
+                    
+                    <label class="sidebar__nav__link" for="file_import_id">
                         <i class="mdi mdi-cloud-upload"></i>
-                        <span class="sidebar__nav__text">Load Settings</span>
+                        <span class="sidebar__nav__text">Import Settings</span>
                     </label>
-                    <input type="file" id="file_input_id" accept="text/plain" style="display:none" onchange="openFile(event)">
+                    <input type="file" id="file_import_id" accept="text/plain" style="display:none" onchange="importSettings(event)">
+                    <label class="sidebar__nav__link" for="file_export_id">
+                        <i class="mdi mdi-cloud-download"></i>
+                        <span class="sidebar__nav__text">Export Settings</span>
+                    </label>
+                    <input type="file" id="file_export_id" accept="text/plain" style="display:none" onchange="exportSettings(event)">
                 </li>
             </ul>
         </nav>

@@ -108,3 +108,27 @@ function MLG_Table_Add(name, to, subject, body) {
             "</tr>");
     }
 }
+
+var importSettings = function (event) {
+    var input = event.target;
+
+    var reader = new FileReader();
+    reader.onload = function () {
+        var text = reader.result;
+         
+        console.log('import settings');
+    };
+    reader.readAsText(input.files[0]);
+};
+
+var exportSettings = function (event) {
+    var input = event.target;
+
+    var reader = new FileReader();
+    reader.onload = function () {
+        var text = reader.result;
+
+        console.log('export settings');
+    };
+    reader.readAsText(input.files[0]);
+};

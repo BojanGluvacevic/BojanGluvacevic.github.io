@@ -3,9 +3,191 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spark Help</title>
+
+    <!-- CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="./assets/css/sidebar.css" />
+    <link rel="stylesheet" href="./assets/css/core.css" />
+
+    <!-- JavaScript Core -->
+    <script src="assets/js/core.js"></script>
 </head>
 <body>
+    <aside class="sidebar">
+        
+        <nav>
+            <img src="./assets/img/logo.png" class="sidebar__nav__logo" />
+            <ul class="sidebar__nav">
+                <li>
+                    <a href="#" class="sidebar__nav__link">
+                        <i class="mdi mdi-fingerprint"></i>
+                        <span class="sidebar__nav__text">Manage Navbar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__nav__link">
+                        <i class="mdi mdi-credit-card"></i>
+                        <span class="sidebar__nav__text">Manage Links</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__nav__link">
+                        <i class="mdi mdi-cart"></i>
+                        <span class="sidebar__nav__text">Shopping cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__nav__link">
+                        <i class="mdi mdi-account-circle"></i>
+                        <span class="sidebar__nav__text">Account circle</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar__nav__link">
+                        <i class="mdi mdi-camera"></i>
+                        <span class="sidebar__nav__text">Camera</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#MLG" class="sidebar__nav__link">
+                        <i class="mdi mdi-email"></i>
+                        <span class="sidebar__nav__text">Mail Link Generator</span>
+                    </a>
+                </li>
+                <li>
+                    
+                    <label class="sidebar__nav__link" for="file_import_id">
+                        <i class="mdi mdi-cloud-upload"></i>
+                        <span class="sidebar__nav__text">Import Settings</span>
+                    </label>
+                    <input type="file" id="file_import_id" accept="text/plain" style="display:none" onchange="importSettings(event)">
+                    <label class="sidebar__nav__link" for="file_export_id">
+                        <i class="mdi mdi-cloud-download"></i>
+                        <span class="sidebar__nav__text">Export Settings</span>
+                    </label>
+                    <input type="file" id="file_export_id" accept="text/plain" style="display:none" onchange="exportSettings(event)">
+                </li>
+            </ul>
+        </nav>
+    </aside>
 
+    <main class="main mb-3">
+        <section>
+            <h2>Title 1</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+                voluptas dicta quaerat explicabo? Minus corporis mollitia beatae nisi
+                earum, ut omnis, cum ducimus nesciunt deleniti veniam tenetur
+                exercitationem, odit iure? Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Eaque ad inventore voluptatem eveniet quibusdam eos
+                accusamus, architecto consequatur? Voluptate deleniti hic quam quos
+                beatae voluptates, quis est animi totam ullam.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+                voluptas dicta quaerat explicabo? Minus corporis mollitia beatae nisi
+                earum, ut omnis, cum ducimus nesciunt deleniti veniam tenetur
+                exercitationem, odit iure? Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Eaque ad inventore voluptatem eveniet quibusdam eos
+                accusamus, architecto consequatur? Voluptate deleniti hic quam quos
+                beatae voluptates, quis est animi totam ullam.
+            </p>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora
+                placeat nobis quisquam, maxime, dolorem aperiam accusamus commodi eius
+                commodi at.
+            </p>
+        </section>
+        <section>
+            <h2>Title 2</h2>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora
+                placeat nobis quisquam, maxime, dolorem aperiam accusamus commodi eius
+                commodi at.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+                voluptas dicta quaerat explicabo? Minus corporis mollitia beatae nisi
+                earum, ut omnis, cum ducimus nesciunt deleniti veniam tenetur
+                exercitationem, odit iure? Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Eaque ad inventore voluptatem eveniet quibusdam eos
+                accusamus, architecto consequatur? Voluptate deleniti hic quam quos
+                beatae voluptates, quis est animi totam ullam.
+            </p>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+                molestiae vero dolorum maiores veniam maxime obcaecati recusandae
+                autem assumenda nam vel eum, repellat tenetur at. Dolorem officiis
+                explicabo amet vero.
+            </p>
+        </section>
+        <section>
+            <h2>Title 3</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro odio
+                placeat nobis quisquam, maxime, dolorem aperiam accusamus commodi eius
+                iste obcaecati. Mollitia magnam blanditiis asperiores. Voluptatibus
+                molestiae vel perspiciatis animi?
+            </p>
+        </section>
+        <section class="mb-3" id="MLG">
+            <h2>MLG - Mail Link Generator</h2>
+            <form>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="mlg__des__name" style="width:105px; text-align:center;">Name</span>
+                    <input type="text" class="form-control" placeholder="Template name" aria-label="Name" aria-describedby="mlg__des__name" id="mlg__name" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="mlg__des__to" style="width:105px; text-align:center;">Recipient(s)</span>
+                    <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="mlg__des__subject" style="width:105px; text-align:center;">Subject</span>
+                    <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
+                    <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" onclick="MLG_Table_Add('mlg__name','mlg__to','mlg__subject','mlg__message');">Add Template</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(79px, 40px);" data-popper-placement="bottom-start">
+                        <li><a class="dropdown-item" id="mlg__URLCopy" href="javascript:copyToClipboard('mlg__temp__value');">Copy URL</a></li>
+                        <li><a class="dropdown-item" id="mlg__URLOpen" href="#" target="_blank">Open</a></li>
+                    </ul>
+                    <input id="mlg__temp__value" hidden="hidden" value="">
+                </div>
+            </form>
+
+            <table id="mlg-table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Recipient(s)</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Message</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+        <br />
+        <br />
+        <br />
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

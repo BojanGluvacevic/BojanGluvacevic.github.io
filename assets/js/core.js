@@ -92,19 +92,38 @@ function copyToClipboard(input) {
     navigator.clipboard.writeText(copyText);
 }
 
-function MLG_Table_Add(name, to, subject, body) {
+function MLG_Table_Add(id, name, to, subject, body, url, uri) {
     if ($("#mlg-table tbody").length == 0) {
         $("#mlg-table").append("<tbody></tbody>");
     }
 
-    if ($("#mlg__name").val() != null && $("#mlg__name").val() != '') {
-
-        $("#mlg-table tbody").append("<tr>" +
-            "<td>" + document.getElementById(name).value + "</td>" +
-            "<td>" + document.getElementById(to).value + "</td>" +
-            "<td>" + document.getElementById(subject).value + "</td>" +
-            "<td>" + document.getElementById(body).value.replace(/(?:\r|\n|\r\n)/g, '<br>') + "</td>" +
-            "<td>" + "<button type='button' onclick=\"$(this).closest('tr').remove()\" class='btn btn-default'>" + "<i class='mdi mdi-delete'>" + "</button>" + "</td>" +
-            "</tr>");
-    }
+    $("#mlg-table tbody").append("<tr>" +
+        "<td>" + name + "</td>" +
+        "<td>" + to + "</td>" +
+        "<td>" + subject + "</td>" +
+        "<td>" + body + "</td>" +
+        "<td>" + "<button type='button' onclick=\"$(this).closest('tr').remove()\" class='btn btn-default'>" + "<i class='mdi mdi-delete'>" + "</button>" + "</td>" +
+        "</tr>");
 }
+
+var openFile = function (event) {
+    var input = event.target;
+
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    reader.onload = (event) => {
+        var file = event.target.result;
+        var allLines = file.split(/\r\n|\n/);
+        // Reading line by line
+        allLines.forEach((line) => {
+            eval(line.replace(/^#email>(EM-\d{3}),(.*?),(.*?),(.*?),(.*?),(.*?),(.*?)$/img, "MLG_Table_Add('$1','$2','$3','$4','$5','$6','$7');"));
+        });
+    };
+
+    reader.onerror = (event) => {
+        alert(event.target.error.name);
+    };
+
+    reader.readAsText(file);
+};

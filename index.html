@@ -133,23 +133,23 @@
             <form>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="mlg__des__name" style="width:105px; text-align:center;">Name</span>
-                    <input type="text" class="form-control" placeholder="Template name" aria-label="Name" aria-describedby="mlg__des__name" id="mlg__name" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    <input type="text" class="form-control" placeholder="Template name" aria-label="Name" aria-describedby="mlg__des__name" id="mlg__name" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="mlg__des__to" style="width:105px; text-align:center;">Recipient(s)</span>
-                    <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="mlg__des__subject" style="width:105px; text-align:center;">Subject</span>
-                    <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
-                    <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');"></textarea>
+                    <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')"></textarea>
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary" onclick="MLG_Table_Add('mlg__name','mlg__to','mlg__subject','mlg__message');">Add Template</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onkeyup="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(79px, 40px);" data-popper-placement="bottom-start">
@@ -176,21 +176,21 @@
             <form>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="mlg__control__email_" style="width:105px; text-align:center;">Email URL</span>
-                    <input type="text" class="form-control" placeholder="" aria-label="Email URL" aria-describedby="mlg__control__email_" id="mlg__control__email" onkeyup="MLG__Control('mlg__control__email');">
+                    <input type="text" class="form-control" placeholder="" aria-label="Email URL" aria-describedby="mlg__control__email_" id="mlg__control__email" onchange="MLG__Control('mlg__control__email')">
                 </div>
             </form>
             <hr class="type_stylish">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="mlg__control__to_" style="width:105px; text-align:center;">To</span>
-                <input readonly="readonly" type="text" class="form-control" placeholder="" aria-label="To" aria-describedby="mlg__control__to_" id="mlg__control__to" onkeyup="">
+                <input readonly="readonly" type="text" class="form-control" placeholder="" aria-label="To" aria-describedby="mlg__control__to_" id="mlg__control__to" ondblclick="copyToClipboard('mlg__control__to')">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="mlg__control__subject_" style="width:105px; text-align:center;">Subject</span>
-                <input readonly="readonly" type="text" class="form-control" placeholder="" aria-label="Subject" aria-describedby="mlg__control__subject_" id="mlg__control__subject" onkeyup="">
+                <input readonly="readonly" type="text" class="form-control" placeholder="" aria-label="Subject" aria-describedby="mlg__control__subject_" id="mlg__control__subject" ondblclick="copyToClipboard('mlg__control__subject')">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
-                <textarea readonly="readonly" class="form-control" aria-label="Message" id="mlg__control__message" rows="8" onkeyup=""></textarea>
+                <textarea readonly="readonly" class="form-control" aria-label="Message" id="mlg__control__message" rows="8" ondblclick="copyToClipboard('mlg__control__message')"></textarea>
             </div>
         </section>
     </main>

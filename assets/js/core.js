@@ -140,6 +140,7 @@ function MLG_Table_Add(name, to, subject, body, url, uri) {
 
     var rand_id = generateRandomNDigits(8);
 
+    /*
     $("#mlg-table tbody").append("<tr id='" + rand_id + "'>" +
         "<td>" + r_name + "</td>" +
         "<td>" +
@@ -149,6 +150,16 @@ function MLG_Table_Add(name, to, subject, body, url, uri) {
                 "   <button type='button' onclick=\"deleteWithPrompt('" + rand_id + "');\" class='btn btn-default' title='Delete record'><i class='mdi mdi-delete' /></button>" +
         "</td>" +
         "</tr>");
+    */
+
+    var buttonOwa = "<button type=\"button\" onclick=\"navigator.clipboard.writeText('" + r_url_owa + "')\" class=\"btn btn-default\" title=\"Copy Mailto link for OWA\"><i class=\"mdi mdi-content-copy\" /></button>";
+    var buttonApp = "<button type=\"button\" onclick=\"navigator.clipboard.writeText('" + r_url_app + "')\" class=\"btn btn-default\" title=\"Copy Mailto link for Applications\"><i class=\"mdi mdi-application\" /></button>";
+    var buttonOpen = "<button type=\"button\" onclick=\"window.open('" + r_url_owa + "', '_blank')\" class=\"btn btn-default\" title=\"Open in new window\"><i class=\"mdi mdi-open-in-new\" /></button>";
+    var buttonDelete = "<button type=\"button\" onclick=\"deleteWithPrompt('" + rand_id + "')\" class=\"btn btn-default\" title=\"Delete record\"><i class=\"mdi mdi-delete\" /></button>";
+
+    var rowHTML = ("<tr id=\"" + rand_id + "\"><td>").concat(buttonOwa).concat("   ").concat(buttonApp).concat("   ").concat(buttonOpen).concat("   ").concat(buttonDelete).concat("</td></tr>");
+
+    $("#mlg-table tbody").append(rowHTML);
 }
 
 function MLG__Control(id) {

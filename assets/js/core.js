@@ -146,7 +146,7 @@ function MLG_Table_Add(name, to, subject, body, url, uri) {
         "   <button type='button' onclick=\"navigator.clipboard.writeText('" + r_url_owa + "');\" class='btn btn-default' title='Copy Mailto link for OWA'><i class='mdi mdi-content-copy ' /></button>" +
         "   <button type='button' onclick=\"navigator.clipboard.writeText('" + r_url_app + "');\" class='btn btn-default' title='Copy Mailto link for Applications'><i class='mdi mdi-application' /></button>" +
         "   <button type='button' onclick=\"window.open('" + r_url_owa  + "', '_blank');\" class='btn btn-default' title='Open in new window'><i class='mdi mdi-open-in-new' /></button>" +
-                "   <button type='button' onclick=\"deleteWithPrompt(" + rand_id + ")\" class='btn btn-default' title='Delete record'><i class='mdi mdi-delete' /></button>" +
+                "   <button type='button' onclick=\"deleteWithPrompt('" + rand_id + "')\" class='btn btn-default' title='Delete record'><i class='mdi mdi-delete' /></button>" +
         "</td>" +
         "</tr>");
 }

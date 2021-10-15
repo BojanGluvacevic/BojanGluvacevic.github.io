@@ -10,6 +10,18 @@ body {
     font-family: 'Roboto';
 }
 
+hr.type_stylish {
+    border: 3px solid darkgreen;
+    background-color: darkgreen;
+    border-radius: 3px;
+    width: 50%;
+    text-align: center;
+    margin-left: 25% !important;
+    margin-right: 25% !important;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 * {
     outline: none;
     box-sizing: border-box;

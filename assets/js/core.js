@@ -157,7 +157,7 @@ function MLG_Table_Add(name, to, subject, body, url, uri) {
     var buttonOpen = "<button type=\"button\" onclick=\"window.open('" + r_url_owa + "', '_blank')\" class=\"btn btn-default\" title=\"Open in new window\"><i class=\"mdi mdi-open-in-new\" /></button>";
     var buttonDelete = "<button type=\"button\" onclick=\"deleteWithPrompt('" + rand_id + "')\" class=\"btn btn-default\" title=\"Delete record\"><i class=\"mdi mdi-delete\" /></button>";
 
-    var rowHTML = ("<tr id=\"" + rand_id + "\"><td>").concat(buttonOwa).concat("   ").concat(buttonApp).concat("   ").concat(buttonOpen).concat("   ").concat(buttonDelete).concat("</td></tr>");
+    var rowHTML = ("<tr id=\"" + rand_id + "\"><td>").concat(r_name).concat("</td><td>").concat(buttonOwa).concat("   ").concat(buttonApp).concat("   ").concat(buttonOpen).concat("   ").concat(buttonDelete).concat("</td></tr>");
 
     $("#mlg-table tbody").append(rowHTML);
 }

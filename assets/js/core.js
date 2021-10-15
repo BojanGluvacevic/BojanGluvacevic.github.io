@@ -165,6 +165,12 @@ function MLG__Control(id) {
             //show message
             document.getElementById('mlg__control__message').value = unescape(match[4]);
         }
+        else {
+            //reset values
+            document.getElementById('mlg__control__to').value = "";
+            document.getElementById('mlg__control__subject').value = "";
+            document.getElementById('mlg__control__message').value = "";
+        }
     }
 }
 

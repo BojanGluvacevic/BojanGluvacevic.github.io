@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Price Match Calculator</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.columns {
+  float: left;
+  width: 33.3%;
+  padding: 8px;
+}
+
+.price {
+  list-style-type: none;
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+  background-color: #111;
+  color: white;
+  font-size: 25px;
+}
+
+.price li {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+.price .grey {
+  background-color: #eee;
+  font-size: 20px;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  .columns {
+    width: 100%;
+  }
+}
+</style>
+
+
+</head>
+<body>
+    <div class="columns" id="taxCalculation">
+        <ul class="price">
+            <li class="header">Calculate Tax</li>
+            <li class="grey">First we need to determine what is Tax % for the state...</li>
+            <li>Total Order Price ($) <input type="text" id="txtOrderPrice" name="txtOrderPrice" /></li>
+            <li>Total Order Tax ($) <input type="text" id="txtOrderTax" name="txtOrderTax" /></li>
+            <li>Tax Rate (%) <input type="text" readonly="1" id="txtOrderTaxRate" name="txtOrderTaxRate" /></li>
+            <li class="grey"><a href="#" onclick="TaxCalculate(false)" class="button">Calculate Tax</a></li>
+        </ul>
+    </div>
+
+    <div class="columns">
+        <ul class="price">
+            <li class="header" style="background-color:#4CAF50">Current Order</li>
+            <li class="grey">And then we need to put information from order being price matched...</li>
+            <li>Product price ($) <input type="text" id="txtProductPriceAfter" name="txtProductPriceAfter" /></li>
+            <li>Product discounts ($) <input type="text" id="txtDiscountsAfter" name="txtDiscountsAfter" value="0.00" /></li>
+            <li>Total Product price ($) <input type="text" id="txtTotalPriceAfter" name="txtTotalPriceAfter" readonly="1" /></li>
+            <li>Product price + Tax ($) <input type="text" id="txtTotalPriceTaxedAfter" name="txtTotalPriceTaxedAfter" readonly="1" /></li>
+            <li class="grey">Total Price Match Amount ($) <input type="text" id="txtPriceMatchAmount" name="txtPriceMatchAmount" readonly="1" /></li>
+            <li class="grey"><a href="#" onclick="PriceMatch()" class="button">Price Match</a></li>
+        </ul>
+    </div>
+
+    <div class="columns" id="priceMatching">
+        <ul class="price">
+            <li class="header">Previous Order</li>
+            <li class="grey">We also need to enter infromation from the initial order...</li>
+            <li>Product price ($) <input type="text" id="txtProductPriceBefore" name="txtProductPriceBefore" /></li>
+            <li>Product discounts ($) <input type="text" id="txtDiscountsBefore" name="txtDiscountsBefore" value="0.00" /></li>
+            <li>Total Product price ($) <input type="text" id="txtTotalPriceBefore" name="txtTotalPriceBefore" readonly="1" /></li>
+            <li>Product price + Tax ($) <input type="text" id="txtTotalPriceTaxedBefore" name="txtTotalPriceTaxedBefore" readonly="1" /></li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        function PriceMatch() {
+            //Before anything, re-calculate Tax rate
+            TaxCalculate(true);
+
+            var productPriceAfter, discountsAfter, productPriceBefore, discountsBefore, taxRate;
+
+            //first load values from user
+            productPriceAfter = document.getElementById("txtProductPriceAfter").value;
+            discountsAfter = document.getElementById("txtDiscountsAfter").value;
+
+            productPriceBefore = document.getElementById("txtProductPriceBefore").value;
+            discountsBefore = document.getElementById("txtDiscountsBefore").value;
+
+            taxRate = document.getElementById("txtOrderTaxRate").value;
+
+            //now validate inputs from user
+            if (isNaN(productPriceAfter) || productPriceAfter.length == 0) { alert('Cannot calculate Tax percentage.\nYou need to enter numeric value for “Product Price” for Current Order.'); return; }
+
+            if (isNaN(discountsAfter) || discountsAfter.length == 0) { alert('Cannot calculate Tax percentage.\nYou need to enter numeric value for “Product Discounts” for Current Order.'); return; }
+
+            if (isNaN(productPriceBefore) || productPriceBefore.length == 0) { alert('Cannot calculate Tax percentage.\nYou need to enter numeric value for “Product Price” for Previous Order.'); return; }
+
+            if (isNaN(discountsBefore) || discountsBefore.length == 0) { alert('Cannot calculate Tax percentage.\nYou need to enter numeric value for “Product Discount” for Previous Order.'); return; }
+
+            if (isNaN(taxRate) || taxRate.length == 0) { alert('Cannot calculate Tax percentage.\nYou need to first “Calculate Tax Rate” on the order.'); return; }
+
+
+            //Calculate based on user input
+            document.getElementById("txtTotalPriceAfter").value = (productPriceAfter - discountsAfter).toFixed(2);
+            document.getElementById("txtTotalPriceTaxedAfter").value = ((productPriceAfter - discountsAfter) * (1 + taxRate / 100)).toFixed(2);
+
+            document.getElementById("txtTotalPriceBefore").value = (productPriceBefore - discountsBefore).toFixed(2);
+            document.getElementById("txtTotalPriceTaxedBefore").value = ((productPriceBefore - discountsBefore) * (1 + taxRate / 100)).toFixed(2);
+
+            var totalBefore, totalAfter;
+
+            totalBefore = (parseFloat(productPriceBefore) - parseFloat(discountsBefore)) * (1 + parseFloat(taxRate) / 100);
+            totalAfter = (parseFloat(productPriceAfter) - parseFloat(discountsAfter)) * (1 + parseFloat(taxRate) / 100);
+
+            if (parseFloat(totalAfter) > parseFloat(totalBefore)) {
+                var pmsum = parseFloat(totalAfter) - parseFloat(totalBefore);
+
+                //calculate price match value
+                document.getElementById("txtPriceMatchAmount").value = pmsum.toFixed(2);
+            } else {
+                //inform price match is not possible
+                alert('Cannot price match this order because current price is lesser or equal to the price on initial order.');
+                document.getElementById("txtPriceMatchAmount").value = "0.00";
+            }
+        }
+
+        function TaxCalculate(silenced) {
+            var orderPrice, orderTax;
+
+            //load the values from user
+            orderPrice = document.getElementById("txtOrderPrice").value;
+            //orderShipping = document.getElementById("txtOrderShipping").value;
+            orderTax = document.getElementById("txtOrderTax").value;
+
+            //first check if any of entered values are not numbers
+            if (!silenced && (isNaN(orderPrice) || orderPrice.length == 0)) { alert('Cannot calculate Tax percentage.\nYou need to enter numeric value for “Total Order Price”.'); return; }
+
+            if (!silenced && (isNaN(orderTax) || orderTax.length == 0)) { alert('Cannot calculate Tax percentage.\nYou need to enter numeric value for “Total Order Tax”.'); return; }
+
+            if (!silenced && (parseFloat(orderTax) >= parseFloat(orderPrice))) { alert('Tax amount cannot be higher or equeal to the price of the product.\nPlease check your “Total Order Tax”.'); return; }
+
+            //calculate tax rate
+            document.getElementById("txtOrderTaxRate").value = ((parseFloat(orderTax) / parseFloat(orderPrice)) * 100).toFixed(2);
+
+            //if notifications are silenced and there is an error in calculation, clear it out
+            if (isNaN(document.getElementById("txtOrderTaxRate").value))
+                document.getElementById("txtOrderTaxRate").value = "";
+        }
+
+    </script>
+    <footer>
+        <small>&copy; Copyright 2019, Bojan Gluvacevic</small>
+    </footer>
+</body>
+</html>

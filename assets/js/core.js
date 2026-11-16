@@ -1,208 +1,386 @@
-/* global bootstrap: false */
-
 (function () {
-  'use strict'
+    "use strict";
 
-  // Tooltip and popover demos
-  document.querySelectorAll('.tooltip-demo')
-    .forEach(function (tooltip) {
-      new bootstrap.Tooltip(tooltip, {
-        selector: '[data-bs-toggle="tooltip"]'
-      })
-    })
+    var templates = [];
 
-  document.querySelectorAll('[data-bs-toggle="popover"]')
-    .forEach(function (popover) {
-      new bootstrap.Popover(popover)
-    })
-
-  document.querySelectorAll('.toast')
-    .forEach(function (toastNode) {
-      var toast = new bootstrap.Toast(toastNode, {
-        autohide: false
-      })
-
-      toast.show()
-    })
-
-  // Disable empty links
-  document.querySelectorAll('[href="#"]')
-    .forEach(function (link) {
-      link.addEventListener('click', function (event) {
-        event.preventDefault()
-      })
-    })
-
-    
-  function setActiveItem() {
-    var hash = window.location.hash
-
-    if (hash === '') {
-      return
+    function getElement(id) {
+        return document.getElementById(id);
     }
 
-    var link = document.querySelector('.bd-aside a[href="' + hash + '"]')
-    var active = document.querySelector('.bd-aside .active')
-    var parent = link.parentNode.parentNode.previousElementSibling
-
-    link.classList.add('active')
-
-    if (parent.classList.contains('collapsed')) {
-      parent.click()
-    }
-
-    if (!active) {
-      return
-    }
-
-    var expanded = active.parentNode.parentNode.previousElementSibling
-
-    active.classList.remove('active')
-
-    if (expanded && parent !== expanded) {
-      expanded.click()
-    }
-  }
-/*
-  setActiveItem()
-    window.addEventListener('hashchange', setActiveItem)
-*/
-})()
-
-function MLG__Prepare(name, to, subject, body, outputControl) {
-    var templateName = document.getElementById(name).value;
-    var mailTo = document.getElementById(to).value;
-    var mailSubject = document.getElementById(subject).value;
-    var mailBody = document.getElementById(body).value;
-
-    //encode values
-    mailTo = "&to=" + encodeURIComponent(mailTo);
-    mailSubject = "&subject=" + encodeURIComponent(mailSubject);
-    mailBody = "&body=" + encodeURIComponent(mailBody);
-
-    var mailBaseURL = "https://outlook.office.com/?path=/mail/action/compose";
-    var mailNewLink = mailBaseURL + mailTo + mailSubject + mailBody;
-
-    document.getElementById(outputControl).value = mailNewLink;
-    $("#mlg__URLOpen").attr("href", mailNewLink);
-}
-
-function prepareURL_OWA(to, subject, body) {
-    //encode values
-    var mailTo = "&to=" + encodeURIComponent(to);
-    var mailSubject = "&subject=" + encodeURIComponent(subject);
-    var mailBody = "&body=" + encodeURIComponent(body);
-
-    var mailBaseURL = "https://outlook.office.com/?path=/mail/action/compose";
-    return (mailBaseURL + mailTo + mailSubject + mailBody);
-}
-
-function prepareURL_App(to, subject, body) {
-    var mailTo = "mailto:" + encodeURIComponent(to);
-    var mailSubject = "&subject=" + encodeURIComponent(subject);
-    var mailBody = "&body=" + encodeURIComponent(body);
-
-    return (mailTo + mailSubject + mailBody);
-}
-
-function copyToClipboard(input) {
-    var copyText = document.getElementById(input).value;
-    navigator.clipboard.writeText(copyText);
-}
-
-var generateRandomNDigits = (n) => {
-    return Math.floor(Math.random() * (9 * (Math.pow(10, n-1)))) + (Math.pow(10, n-1));
-}
-
-
-function deleteWithPrompt(id) {
-    if (confirm('Do you really want to delete this entry?')) {
-        $('#' + id).remove();  //remove the element
-    }
-    else {
-        alert('Watch where you press!');
-    }
-}
-
-function MLG_Table_Add(name, to, subject, body, url, uri) {
-    if ($("#mlg-table tbody").length == 0) {
-        $("#mlg-table").append("<tbody></tbody>");
-    }
-
-    //read name from the browser
-    var r_name = document.getElementById(name).value;
-    var r_to = document.getElementById(to).value;
-    var r_subject = document.getElementById(subject).value;
-    var r_body = document.getElementById(body).value;
-
-    var r_url_owa = prepareURL_OWA(r_to, r_subject, r_body);
-    var r_url_app = prepareURL_App(r_to, r_subject, r_body);
-
-    var rand_id = generateRandomNDigits(8);
-
-    /*
-    $("#mlg-table tbody").append("<tr id='" + rand_id + "'>" +
-        "<td>" + r_name + "</td>" +
-        "<td>" +
-        "   <button type='button' onclick=\"navigator.clipboard.writeText('" + r_url_owa + "');\" class='btn btn-default' title='Copy Mailto link for OWA'><i class='mdi mdi-content-copy' /></button>" +
-        "   <button type='button' onclick=\"navigator.clipboard.writeText('" + r_url_app + "');\" class='btn btn-default' title='Copy Mailto link for Applications'><i class='mdi mdi-application' /></button>" +
-        "   <button type='button' onclick=\"window.open('" + r_url_owa  + "', '_blank');\" class='btn btn-default' title='Open in new window'><i class='mdi mdi-open-in-new' /></button>" +
-                "   <button type='button' onclick=\"deleteWithPrompt('" + rand_id + "');\" class='btn btn-default' title='Delete record'><i class='mdi mdi-delete' /></button>" +
-        "</td>" +
-        "</tr>");
-    */
-
-    var buttonOwa = "<button type=\"button\" onclick=\"navigator.clipboard.writeText('" + r_url_owa + "')\" class=\"btn btn-default\" title=\"Copy Mailto link for OWA\"><i class=\"mdi mdi-content-copy\" /></button>";
-    var buttonApp = "<button type=\"button\" onclick=\"navigator.clipboard.writeText('" + r_url_app + "')\" class=\"btn btn-default\" title=\"Copy Mailto link for Applications\"><i class=\"mdi mdi-application\" /></button>";
-    var buttonOpen = "<button type=\"button\" onclick=\"window.open('" + r_url_owa + "', '_blank')\" class=\"btn btn-default\" title=\"Open in new window\"><i class=\"mdi mdi-open-in-new\" /></button>";
-    var buttonDelete = "<button type=\"button\" onclick=\"deleteWithPrompt('" + rand_id + "')\" class=\"btn btn-default\" title=\"Delete record\"><i class=\"mdi mdi-delete\" /></button>";
-
-    var rowHTML = ("<tr id=\"" + rand_id + "\"><td>").concat(r_name).concat("</td><td>").concat(buttonOwa).concat("   ").concat(buttonApp).concat("   ").concat(buttonOpen).concat("   ").concat(buttonDelete).concat("</td></tr>");
-
-    $("#mlg-table tbody").append(rowHTML);
-}
-
-function MLG__Control(id) {
-    var url = document.getElementById(id).value;
-
-    if (url.length > 13) { // don't fire on any change, need to have some input first
-        var myregexp = /^(https:\/\/outlook\.office\.com\/\?path=\/mail\/action\/compose&to=|mailto:)(.*?)&subject=(.*?)&body=(.*?)$/img;
-        var match = myregexp.exec(url);
-        if (match != null) {
-            //show recipients
-            document.getElementById('mlg__control__to').value = unescape(match[2]);
-            //show subject
-            document.getElementById('mlg__control__subject').value = unescape(match[3]);
-            //show message
-            document.getElementById('mlg__control__message').value = unescape(match[4]);
-        }
-        else {
-            //reset values
-            document.getElementById('mlg__control__to').value = "";
-            document.getElementById('mlg__control__subject').value = "";
-            document.getElementById('mlg__control__message').value = "";
+    function setStatus(element, message, state) {
+        element.textContent = message;
+        if (state) {
+            element.dataset.state = state;
+        } else {
+            delete element.dataset.state;
         }
     }
-}
 
-var openFile = function (event) {
-    var input = event.target;
+    function getComposerValues() {
+        return {
+            name: getElement("template-name").value.trim(),
+            to: getElement("mail-to").value.trim(),
+            subject: getElement("mail-subject").value.trim(),
+            body: getElement("mail-message").value
+        };
+    }
 
-    var file = input.files[0];
-    var reader = new FileReader();
+    function buildOutlookUrl(template) {
+        return "https://outlook.office.com/?path=/mail/action/compose" +
+            "&to=" + encodeURIComponent(template.to) +
+            "&subject=" + encodeURIComponent(template.subject) +
+            "&body=" + encodeURIComponent(template.body);
+    }
 
-    reader.onload = (event) => {
-        var file = event.target.result;
-        var allLines = file.split(/\r\n|\n/);
-        // Reading line by line
-        allLines.forEach((line) => {
-            eval(line.replace(/^#email>(EM-\d{3}),(.*?),(.*?),(.*?),(.*?),(.*?),(.*?)$/img, "MLG_Table_Add('$1','$2','$3','$4','$5','$6','$7');"));
+    function buildMailtoUrl(template) {
+        return "mailto:" + encodeURIComponent(template.to) +
+            "?subject=" + encodeURIComponent(template.subject) +
+            "&body=" + encodeURIComponent(template.body);
+    }
+
+    async function copyText(value) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(value);
+            return;
+        }
+
+        var fallback = document.createElement("textarea");
+        fallback.value = value;
+        fallback.setAttribute("readonly", "");
+        fallback.style.position = "fixed";
+        fallback.style.opacity = "0";
+        document.body.appendChild(fallback);
+        fallback.select();
+        var copied = document.execCommand("copy");
+        fallback.remove();
+
+        if (!copied) {
+            throw new Error("Copying is not available in this browser.");
+        }
+    }
+
+    function createAction(label, handler, danger) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "row-action" + (danger ? " row-action--danger" : "");
+        button.textContent = label;
+        button.addEventListener("click", handler);
+        return button;
+    }
+
+    function renderTemplates() {
+        var list = getElement("template-list");
+        var empty = getElement("template-empty");
+        var tableWrap = getElement("template-table-wrap");
+        var count = getElement("template-count");
+        list.replaceChildren();
+
+        templates.forEach(function (template) {
+            var row = document.createElement("tr");
+            var nameCell = document.createElement("td");
+            var recipientCell = document.createElement("td");
+            var actionCell = document.createElement("td");
+            var actions = document.createElement("span");
+
+            nameCell.textContent = template.name;
+            recipientCell.textContent = template.to;
+            actions.className = "row-actions";
+
+            actions.append(
+                createAction("Copy", async function () {
+                    try {
+                        await copyText(buildOutlookUrl(template));
+                        setStatus(getElement("composer-status"), "Outlook link copied for “" + template.name + "”.", "success");
+                    } catch (error) {
+                        setStatus(getElement("composer-status"), error.message, "error");
+                    }
+                }),
+                createAction("Open", function () {
+                    window.open(buildOutlookUrl(template), "_blank", "noopener");
+                }),
+                createAction("App", function () {
+                    window.location.href = buildMailtoUrl(template);
+                }),
+                createAction("Delete", function () {
+                    templates = templates.filter(function (item) {
+                        return item.id !== template.id;
+                    });
+                    renderTemplates();
+                    setStatus(getElement("composer-status"), "Template removed.", "success");
+                }, true)
+            );
+
+            actionCell.appendChild(actions);
+            row.append(nameCell, recipientCell, actionCell);
+            list.appendChild(row);
         });
-    };
 
-    reader.onerror = (event) => {
-        alert(event.target.error.name);
-    };
+        var hasTemplates = templates.length > 0;
+        empty.hidden = hasTemplates;
+        tableWrap.hidden = !hasTemplates;
+        count.textContent = templates.length + (templates.length === 1 ? " template" : " templates");
+    }
 
-    reader.readAsText(file);
-};
+    function addTemplate(template) {
+        templates.push({
+            id: window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
+            name: template.name,
+            to: template.to,
+            subject: template.subject || "",
+            body: template.body || ""
+        });
+    }
+
+    function updateComposerState() {
+        var template = getComposerValues();
+        var hasRecipient = template.to.length > 0;
+        getElement("copy-outlook-link").disabled = !hasRecipient;
+        getElement("open-outlook").disabled = !hasRecipient;
+
+        if (hasRecipient) {
+            setStatus(getElement("composer-status"), "Your Outlook link is ready.", "success");
+        } else {
+            setStatus(getElement("composer-status"), "Add a recipient to prepare a link.");
+        }
+    }
+
+    function parseComposeLink(value) {
+        var raw = value.trim();
+        if (!raw) {
+            return null;
+        }
+
+        var url;
+        try {
+            url = new URL(raw);
+        } catch (_error) {
+            throw new Error("This is not a valid link.");
+        }
+
+        if (url.protocol === "mailto:") {
+            return {
+                to: decodeURIComponent(url.pathname),
+                subject: url.searchParams.get("subject") || "",
+                body: url.searchParams.get("body") || ""
+            };
+        }
+
+        if (url.protocol !== "https:" || url.hostname !== "outlook.office.com") {
+            throw new Error("Use an Outlook Web or mailto link.");
+        }
+
+        return {
+            to: url.searchParams.get("to") || "",
+            subject: url.searchParams.get("subject") || "",
+            body: url.searchParams.get("body") || ""
+        };
+    }
+
+    function inspectLink() {
+        var status = getElement("inspector-status");
+        var results = getElement("inspector-results");
+        var value = getElement("inspect-url").value;
+
+        if (!value.trim()) {
+            results.hidden = true;
+            setStatus(status, "Waiting for a link.");
+            return;
+        }
+
+        try {
+            var parsed = parseComposeLink(value);
+            getElement("inspect-to").value = parsed.to;
+            getElement("inspect-subject").value = parsed.subject;
+            getElement("inspect-message").value = parsed.body;
+            results.hidden = false;
+            setStatus(status, "Link decoded successfully.", "success");
+        } catch (error) {
+            results.hidden = true;
+            setStatus(status, error.message, "error");
+        }
+    }
+
+    function parseCsvLine(line) {
+        var values = [];
+        var current = "";
+        var quoted = false;
+
+        for (var index = 0; index < line.length; index += 1) {
+            var character = line[index];
+
+            if (character === '"' && quoted && line[index + 1] === '"') {
+                current += '"';
+                index += 1;
+            } else if (character === '"') {
+                quoted = !quoted;
+            } else if (character === "," && !quoted) {
+                values.push(current.trim());
+                current = "";
+            } else {
+                current += character;
+            }
+        }
+
+        values.push(current.trim());
+        return quoted ? null : values;
+    }
+
+    function parseTemplateLine(line) {
+        if (!line.startsWith("#email>")) {
+            return null;
+        }
+
+        var fields = parseCsvLine(line.slice(7));
+        if (!fields) {
+            return null;
+        }
+
+        if (/^EM-\d{3}$/i.test(fields[0])) {
+            fields.shift();
+        }
+
+        if (fields.length < 4 || !fields[0] || !fields[1]) {
+            return null;
+        }
+
+        return {
+            name: fields[0],
+            to: fields[1],
+            subject: fields[2],
+            body: fields[3]
+        };
+    }
+
+    function loadTemplateFile(file) {
+        var reader = new FileReader();
+        reader.addEventListener("load", function (event) {
+            var imported = 0;
+            var lines = String(event.target.result).split(/\r?\n/);
+
+            lines.forEach(function (line) {
+                var template = parseTemplateLine(line.trim());
+                if (template) {
+                    addTemplate(template);
+                    imported += 1;
+                }
+            });
+
+            renderTemplates();
+            if (imported > 0) {
+                setStatus(getElement("composer-status"), imported + (imported === 1 ? " template loaded." : " templates loaded."), "success");
+                window.location.hash = "OMG";
+            } else {
+                setStatus(getElement("composer-status"), "No compatible #email> templates were found in that file.", "error");
+            }
+        });
+        reader.addEventListener("error", function () {
+            setStatus(getElement("composer-status"), "The selected file could not be read.", "error");
+        });
+        reader.readAsText(file);
+    }
+
+    function setActiveNavigation() {
+        var sections = document.querySelectorAll("[data-nav-section]");
+        var links = document.querySelectorAll("[data-nav-link]");
+
+        function activate(id) {
+            links.forEach(function (link) {
+                if (link.getAttribute("href") === "#" + id) {
+                    link.setAttribute("aria-current", "true");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
+        }
+
+        activate("overview");
+        if (!("IntersectionObserver" in window)) {
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            var visible = entries
+                .filter(function (entry) { return entry.isIntersecting; })
+                .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
+
+            if (visible[0]) {
+                activate(visible[0].target.id);
+            }
+        }, {
+            rootMargin: "-20% 0px -60% 0px",
+            threshold: [0, 0.2, 0.5]
+        });
+
+        sections.forEach(function (section) {
+            observer.observe(section);
+        });
+    }
+
+    function initialise() {
+        var composerForm = getElement("composer-form");
+        var composerStatus = getElement("composer-status");
+
+        composerForm.addEventListener("input", updateComposerState);
+        composerForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var template = getComposerValues();
+
+            if (!template.name || !template.to) {
+                setStatus(composerStatus, "Add a template name and at least one recipient.", "error");
+                (!template.name ? getElement("template-name") : getElement("mail-to")).focus();
+                return;
+            }
+
+            addTemplate(template);
+            renderTemplates();
+            setStatus(composerStatus, "“" + template.name + "” added to the template list.", "success");
+        });
+
+        getElement("copy-outlook-link").addEventListener("click", async function () {
+            try {
+                await copyText(buildOutlookUrl(getComposerValues()));
+                setStatus(composerStatus, "Outlook link copied.", "success");
+            } catch (error) {
+                setStatus(composerStatus, error.message, "error");
+            }
+        });
+
+        getElement("open-outlook").addEventListener("click", function () {
+            window.open(buildOutlookUrl(getComposerValues()), "_blank", "noopener");
+        });
+
+        getElement("inspect-url").addEventListener("input", inspectLink);
+        getElement("inspector-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            inspectLink();
+        });
+
+        document.querySelectorAll("[data-copy-target]").forEach(function (button) {
+            button.addEventListener("click", async function () {
+                try {
+                    await copyText(getElement(button.dataset.copyTarget).value);
+                    setStatus(getElement("inspector-status"), "Field copied.", "success");
+                } catch (error) {
+                    setStatus(getElement("inspector-status"), error.message, "error");
+                }
+            });
+        });
+
+        getElement("import-trigger").addEventListener("click", function () {
+            getElement("file-input").click();
+        });
+        getElement("file-input").addEventListener("change", function (event) {
+            var file = event.target.files[0];
+            if (file) {
+                loadTemplateFile(file);
+            }
+            event.target.value = "";
+        });
+
+        renderTemplates();
+        updateComposerState();
+        setActiveNavigation();
+    }
+
+    document.addEventListener("DOMContentLoaded", initialise);
+})();

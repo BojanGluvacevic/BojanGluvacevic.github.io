@@ -1,186 +1,267 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spark Help</title>
-
-    <!-- CSS Files -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css" />
-    <link rel="stylesheet" href="./assets/css/sidebar.css" />
-    <link rel="stylesheet" href="./assets/css/core.css" />
-
-    <!-- JavaScript Core -->
-    <script src="assets/js/core.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Spark Help is a collection of practical tools for frontline operations, reporting, and faster customer support.">
+    <meta name="theme-color" content="#10232d">
+    <meta property="og:title" content="Spark Help | Practical operations tools">
+    <meta property="og:description" content="Small, focused tools that turn repetitive support and reporting work into clearer, faster workflows.">
+    <meta property="og:type" content="website">
+    <title>Spark Help | Practical operations tools</title>
+    <link rel="stylesheet" href="./assets/css/sidebar.css">
+    <link rel="stylesheet" href="./assets/css/core.css">
+    <script src="./assets/js/core.js" defer></script>
 </head>
 <body>
-    <aside class="sidebar">
-        
-        <nav>
-            <img src="./assets/img/logo.png" class="sidebar__nav__logo" />
-            <ul class="sidebar__nav">
-                <li>
-                    <a href="#PMCalculator" class="sidebar__nav__link">
-                        <i class="mdi mdi-calculator-variant"></i>
-                        <span class="sidebar__nav__text">PM Calculator</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#SupervisorHelper" class="sidebar__nav__link">
-                        <i class="mdi mdi-handshake"></i>
-                        <span class="sidebar__nav__text">Supervisor Helper</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#CallHelper" class="sidebar__nav__link">
-                        <i class="mdi mdi-lifebuoy"></i>
-                        <span class="sidebar__nav__text">Call Helper</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#Reporter" class="sidebar__nav__link">
-                        <i class="mdi mdi-chart-line"></i>
-                        <span class="sidebar__nav__text">Reporter</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#OMG" class="sidebar__nav__link">
-                        <i class="mdi mdi-camera"></i>
-                        <span class="sidebar__nav__text">OMG - Compose</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#OMG-C" class="sidebar__nav__link">
-                        <i class="mdi mdi-email"></i>
-                        <span class="sidebar__nav__text">OMG - Control</span>
-                    </a>
-                </li>
-                
-    <li>
-        <label class="sidebar__nav__link" for="file_input_id">
-            <i class="mdi mdi-cloud-upload"></i>
-            <span class="sidebar__nav__text">Load Settings</span>
-        </label>
-        <input type="file" id="file_input_id" accept="text/plain" style="display:none" onchange="openFile(event)">
-    </li>
-            </ul>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <aside class="sidebar" aria-label="Primary navigation">
+        <a class="sidebar__brand" href="#overview" aria-label="Spark Help home">
+            <img class="sidebar__logo" src="./assets/img/logo.png" alt="" width="800" height="600">
+            <span>
+                <strong>Spark Help</strong>
+                <small>Operations toolkit</small>
+            </span>
+        </a>
+
+        <nav class="sidebar__nav" aria-label="Page sections">
+            <a class="sidebar__link" href="#overview" data-nav-link>
+                <span class="sidebar__index" aria-hidden="true">01</span>
+                <span>Overview</span>
+            </a>
+            <a class="sidebar__link" href="#projects" data-nav-link>
+                <span class="sidebar__index" aria-hidden="true">02</span>
+                <span>Projects</span>
+            </a>
+            <a class="sidebar__link" href="#OMG" data-nav-link>
+                <span class="sidebar__index" aria-hidden="true">03</span>
+                <span>Mail composer</span>
+            </a>
+            <a class="sidebar__link" href="#OMG-C" data-nav-link>
+                <span class="sidebar__index" aria-hidden="true">04</span>
+                <span>Link inspector</span>
+            </a>
         </nav>
+
+        <div class="sidebar__footer">
+            <input class="visually-hidden" type="file" id="file-input" accept=".txt,text/plain">
+            <button class="sidebar__import" type="button" id="import-trigger">
+                <span aria-hidden="true">+</span>
+                Load saved templates
+            </button>
+            <p>Files are read only in your browser.</p>
+        </div>
     </aside>
 
-    <main class="main mb-3">
-        <section id="PMCalculator" style="min-height:600px">
-            <h2>Price Match Calculator (US Market)</h2>
-            <p>
-                This calculator was developed for Tier 2 agents as many of them were struggling with price match calculations.
-                Javascript and CSS embedded into the file that could be sent via internal email. Agents are unable to save anything on a permanent basis (bookmarks, files, etc..). Every state in the USA has a different tax rate.<br /><br />
+    <main id="main-content" class="main">
+        <section class="hero" id="overview" data-nav-section>
+            <div class="hero__content">
+                <p class="eyebrow">Bojan Gluvacevic · workflow design &amp; development</p>
+                <h1>Useful tools for the work between the systems.</h1>
+                <p class="hero__lede">Spark Help is a collection of focused utilities built to remove repetitive steps from customer support, reporting, and day-to-day operations.</p>
+                <div class="hero__actions">
+                    <a class="button button--primary" href="#projects">Explore the projects</a>
+                    <a class="button button--quiet" href="#OMG">Build an email template</a>
+                </div>
+            </div>
+            <dl class="hero__summary" aria-label="Collection summary">
+                <div>
+                    <dt>04</dt>
+                    <dd>workflow projects</dd>
+                </div>
+                <div>
+                    <dt>02</dt>
+                    <dd>interactive mail tools</dd>
+                </div>
+                <div>
+                    <dt>Local</dt>
+                    <dd>browser-first utilities</dd>
+                </div>
+            </dl>
+        </section>
 
-                <a href="temp/PMCalculator.html" target="_blank">Price Match Demo</a>
-            </p>
-        </section>
-        <section id="SupervisorHelper" style="min-height:600px">
-            <h2>Supervisor Helper - Excel Manipulation</h2>
-            <p>
-                Extension of MS Excel ribbon control with custom actions that are used on a daily basis to manage the floor. Actions include manipulation of Excel worksheet data, MS Outlook calls, application launch and triggering specific actions in external applications.
-            </p>
-            <p>
-                <img src="temp/SupervisorHelper.png" width="100%" />
-            </p>
-        </section>
-        <section id="CallHelper" style="min-height:600px">
-            <h2>Call Helper - Excel Dynamic Content</h2>
-            <p>
-                Developed while working for InfoSys as they have a completely paperless environment and bookmarks in address bar are locked out via GPO. Excel document that has 3 major settings categories<br />
-                - Credential Manager - place to store all of your login details<br />
-                - Navigation Manager - place to create drop down menus and assign desired credentials<br />
-                - Content Manager - place to save useful information / reminders / unique problem - solution cases<br /><br />
-                Once information is populated, pressing the button Create HTML will create an HTML page with content specified in Excel.
-                This page can then be kept in the mailbox for easier access.<br />
-                Includes also a feature to phonetically spell out entered text, and all passwords / usernames and content from the dropdown menus is copied to clipboard on click.
-                <br /><a href="temp/ISYSHelper.xlsm">Demo Excel Document</a><br /><a href="temp/Call_Helper.html" target="_blank">Demo - Generated Page</a>
-            </p>
-        </section>
-        <section id="Reporter" style="min-height:600px">
-            <h2>Reporter - Marketing Report</h2>
-            <p>
-                Tool that connects to the cruise line database and creates uniformed data extract for which I've created an Excel document that accepts the extracted data and produces extensive marketing reports.
-                <br />*Data used as a sample is randomly generated.
-                <br /><a href="temp/Reporter.docx">Reporter - Technical specification</a><br />
-                <a href="temp/Reporter.xlsx">Reporter - Demo Report</a><br /><br /><br />
-            </p>
-        </section>
-        <section class="mb-3" id="OMG" style="min-height:600px;">
-            <h2>OMG - Outlook Mail Generator</h2>
-            <form>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__des__name" style="width:105px; text-align:center;">Name</span>
-                    <input type="text" class="form-control" placeholder="Template name" aria-label="Name" aria-describedby="mlg__des__name" id="mlg__name" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')">
+        <section class="section" id="projects" data-nav-section>
+            <div class="section__heading">
+                <div>
+                    <p class="eyebrow">Selected work</p>
+                    <h2>Small interventions, measurable relief.</h2>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__des__to" style="width:105px; text-align:center;">Recipient(s)</span>
-                    <input type="text" class="form-control" placeholder="first@sky.ie; second@sky.ie;" aria-label="Recipient(s)" aria-describedby="mlg__des__to" id="mlg__to" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__des__subject" style="width:105px; text-align:center;">Subject</span>
-                    <input type="text" class="form-control" placeholder="Email subject" aria-label="Subject" aria-describedby="mlg__des__subject" id="mlg__subject" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
-                    <textarea class="form-control" aria-label="Message" id="mlg__message" rows="8" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value')"></textarea>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary" onclick="MLG_Table_Add('mlg__name','mlg__to','mlg__subject','mlg__message');">Add Template</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" onchange="MLG__Prepare('mlg__name','mlg__to','mlg__subject','mlg__message','mlg__temp__value');">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(79px, 40px);" data-popper-placement="bottom-start">
-                        <li><a class="dropdown-item" id="mlg__URLCopy" href="javascript:copyToClipboard('mlg__temp__value');">Copy URL</a></li>
-                        <li><a class="dropdown-item" id="mlg__URLOpen" href="#" target="_blank">Open</a></li>
-                    </ul>
-                    <input id="mlg__temp__value" hidden="hidden" value="">
-                </div>
-            </form>
+                <p>Each project starts with a recurring operational problem and reduces it to a clearer, repeatable workflow.</p>
+            </div>
 
-            <table id="mlg-table" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="project-grid">
+                <article class="project-card project-card--featured" id="PMCalculator">
+                    <div class="project-card__visual project-card__visual--calculator" aria-hidden="true">
+                        <span>US</span>
+                        <strong>Price + tax</strong>
+                        <small>one-file calculator</small>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span>Browser utility</span>
+                            <span>JavaScript · CSS</span>
+                        </div>
+                        <h3>Price Match Calculator</h3>
+                        <p>A portable calculator that helps Tier 2 agents apply state-specific US tax rates and complete price-match calculations consistently.</p>
+                        <a class="text-link" href="./temp/PMCalculator.html" target="_blank" rel="noopener">Open live demo <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <article class="project-card" id="SupervisorHelper">
+                    <img class="project-card__image" src="./temp/SupervisorHelper.png" alt="A custom Excel ribbon with shortcuts for recurring supervisor tasks" width="1812" height="254" loading="lazy">
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span>Desktop automation</span>
+                            <span>Excel · Outlook</span>
+                        </div>
+                        <h3>Supervisor Helper</h3>
+                        <p>A custom Excel ribbon that puts floor-management actions, worksheet automation, Outlook tasks, and application shortcuts in one familiar place.</p>
+                    </div>
+                </article>
+
+                <article class="project-card" id="CallHelper">
+                    <div class="project-card__visual project-card__visual--call" aria-hidden="true">
+                        <span>01</span><span>02</span><span>03</span>
+                        <strong>Credentials → navigation → content</strong>
+                    </div>
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span>Portable workspace</span>
+                            <span>Excel · HTML</span>
+                        </div>
+                        <h3>Call Helper</h3>
+                        <p>An Excel-driven content system for paperless, policy-restricted environments. It generates a portable page for navigation, notes, and quick-access information.</p>
+                        <div class="project-card__links">
+                            <a class="text-link" href="./temp/Call_Helper.html" target="_blank" rel="noopener">Open generated page <span aria-hidden="true">↗</span></a>
+                            <a class="text-link text-link--muted" href="./temp/ISYSHelper.xlsm">Download workbook</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" id="Reporter">
+                    <img class="project-card__image project-card__image--report" src="./temp/Reporter.png" alt="Technical documentation and interface examples for the Reporter project" width="1920" height="8104" loading="lazy">
+                    <div class="project-card__body">
+                        <div class="project-card__meta">
+                            <span>Reporting workflow</span>
+                            <span>Data · Excel</span>
+                        </div>
+                        <h3>Reporter</h3>
+                        <p>A consistent data extract and reporting workflow for cruise-line marketing analysis. The included sample report uses randomly generated data.</p>
+                        <div class="project-card__links">
+                            <a class="text-link" href="./temp/Reporter.xlsx">Download sample report</a>
+                            <a class="text-link text-link--muted" href="./temp/Reporter.docx">Read specification</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </section>
-        <section class="mb-3" id="OMG-C" style="min-height:600px;">
-            <h2>Outlook Mail Generator - Control</h2>
-            <form>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="mlg__control__email_" style="width:105px; text-align:center;">Email URL</span>
-                    <input type="text" class="form-control" placeholder="" aria-label="Email URL" aria-describedby="mlg__control__email_" id="mlg__control__email" onchange="MLG__Control('mlg__control__email')">
+
+        <section class="section tool-section" id="OMG" data-nav-section>
+            <div class="tool-intro">
+                <p class="eyebrow">Interactive tool 01</p>
+                <h2>Outlook mail composer</h2>
+                <p>Create a reusable Outlook compose link without sending form data anywhere. Add useful messages to a temporary on-page library as you work.</p>
+                <ul class="feature-list">
+                    <li>Outlook Web and desktop links</li>
+                    <li>Safe, encoded message content</li>
+                    <li>Nothing saved after this tab closes</li>
+                </ul>
+            </div>
+
+            <div class="tool-panel">
+                <form id="composer-form" novalidate>
+                    <div class="field-grid field-grid--split">
+                        <div class="field">
+                            <label for="template-name">Template name</label>
+                            <input id="template-name" name="name" type="text" autocomplete="off" placeholder="e.g. Follow-up summary">
+                        </div>
+                        <div class="field">
+                            <label for="mail-to">Recipient(s)</label>
+                            <input id="mail-to" name="to" type="text" autocomplete="off" placeholder="name@example.com; second@example.com" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="mail-subject">Subject</label>
+                        <input id="mail-subject" name="subject" type="text" placeholder="A clear, useful subject line">
+                    </div>
+                    <div class="field">
+                        <label for="mail-message">Message</label>
+                        <textarea id="mail-message" name="message" rows="7" placeholder="Write the message once, then reuse it safely."></textarea>
+                    </div>
+                    <div class="tool-actions">
+                        <button class="button button--primary" type="submit">Add to template list</button>
+                        <button class="button button--quiet" type="button" id="copy-outlook-link">Copy Outlook link</button>
+                        <button class="button button--ghost" type="button" id="open-outlook">Open Outlook <span aria-hidden="true">↗</span></button>
+                    </div>
+                    <p class="status" id="composer-status" role="status" aria-live="polite">Add a recipient to prepare a link.</p>
+                </form>
+
+                <div class="template-library" id="template-library">
+                    <div class="template-library__heading">
+                        <h3>Template list</h3>
+                        <span id="template-count">0 templates</span>
+                    </div>
+                    <div class="template-empty" id="template-empty">
+                        <strong>No templates yet</strong>
+                        <p>Add one above or load a compatible text file from the navigation.</p>
+                    </div>
+                    <div class="table-wrap" id="template-table-wrap" hidden>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Template</th>
+                                    <th scope="col">Recipient</th>
+                                    <th scope="col"><span class="visually-hidden">Actions</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="template-list"></tbody>
+                        </table>
+                    </div>
                 </div>
-            </form>
-            <hr class="type_stylish">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="mlg__control__to_" style="width:105px; text-align:center;">To</span>
-                <input readonly="readonly" type="text" class="form-control" placeholder="" aria-label="To" aria-describedby="mlg__control__to_" id="mlg__control__to" ondblclick="copyToClipboard('mlg__control__to')">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="mlg__control__subject_" style="width:105px; text-align:center;">Subject</span>
-                <input readonly="readonly" type="text" class="form-control" placeholder="" aria-label="Subject" aria-describedby="mlg__control__subject_" id="mlg__control__subject" ondblclick="copyToClipboard('mlg__control__subject')">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" style="width:105px; text-align:center;">Message</span>
-                <textarea readonly="readonly" class="form-control" aria-label="Message" id="mlg__control__message" rows="8" ondblclick="copyToClipboard('mlg__control__message')"></textarea>
             </div>
         </section>
+
+        <section class="section tool-section tool-section--reverse" id="OMG-C" data-nav-section>
+            <div class="tool-intro">
+                <p class="eyebrow">Interactive tool 02</p>
+                <h2>Compose-link inspector</h2>
+                <p>Paste an Outlook Web or <code>mailto:</code> link to reveal its recipient, subject, and message before using it.</p>
+            </div>
+
+            <div class="tool-panel">
+                <form id="inspector-form">
+                    <div class="field">
+                        <label for="inspect-url">Email compose link</label>
+                        <textarea id="inspect-url" name="url" rows="4" placeholder="Paste an Outlook or mailto link here" spellcheck="false"></textarea>
+                    </div>
+                    <p class="status" id="inspector-status" role="status" aria-live="polite">Waiting for a link.</p>
+                </form>
+
+                <div class="inspector-results" id="inspector-results" hidden>
+                    <div class="field field--copy">
+                        <label for="inspect-to">Recipient(s)</label>
+                        <input id="inspect-to" type="text" readonly>
+                        <button type="button" data-copy-target="inspect-to">Copy</button>
+                    </div>
+                    <div class="field field--copy">
+                        <label for="inspect-subject">Subject</label>
+                        <input id="inspect-subject" type="text" readonly>
+                        <button type="button" data-copy-target="inspect-subject">Copy</button>
+                    </div>
+                    <div class="field field--copy field--copy-message">
+                        <label for="inspect-message">Message</label>
+                        <textarea id="inspect-message" rows="6" readonly></textarea>
+                        <button type="button" data-copy-target="inspect-message">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p><strong>Spark Help</strong> · practical tools for clearer operations.</p>
+            <a href="#overview">Back to top <span aria-hidden="true">↑</span></a>
+        </footer>
     </main>
-
-    <!-- JavaScript Files -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
